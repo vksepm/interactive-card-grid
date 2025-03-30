@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Card Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    // Add custom configurations if needed
+                }
+            },
+            plugins: [
+                // Add Tailwind plugins if needed, e.g., @tailwindcss/line-clamp
+                // Make sure to include the plugin script if you use it.
+                // Example for line-clamp (requires separate script or CDN):
+                // require('@tailwindcss/line-clamp'),
+            ]
+        }
+    </script>
+    <style type="text/tailwindcss">
+        /* Custom base styles or component overrides if necessary */
+        body {
+            @apply bg-gray-50 font-sans;
+        }
+        /* Style for search input clear button (X) in Webkit browsers */
+        input[type="search"]::-webkit-search-cancel-button {
+            @apply appearance-none h-4 w-4 bg-no-repeat bg-center cursor-pointer;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%239CA3AF"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>');
+        }
+        /* Basic styling for pagination buttons */
+        .pagination-btn {
+            @apply inline-block px-3 py-1 mx-1 border border-gray-300 rounded bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed;
+        }
+        .pagination-btn.active {
+            @apply bg-blue-500 border-blue-500 text-white hover:bg-blue-600;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800">
+            Resource Hub
+        </h1>
+
+        <div class="mb-6">
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Search cards by title, description, author, or skill..."
+                class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition duration-150 ease-in-out"
+            />
+        </div>
+
+        <div
+            id="card-grid"
+            class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+        >
+            </div>
+
+        <div id="pagination-controls" class="mt-8 text-center">
+            </div>
+
+    </div>
+
+    <script>
+        // --- Dummy Data ---
+        // In a real application, this data would likely come from an API
+        const allCardsData = [
+            // Generate 20 sample cards
+            { id: 1, title: "Introduction to Python", publishedDate: "March 1, 2025", description: "Learn the basics of Python programming, including syntax, data types, and control flow.", linkUrl: "https://github.com", author: "Alice Green", skill: "Python" },
+            { id: 2, title: "Advanced CSS Techniques", publishedDate: "March 3, 2025", description: "Explore modern CSS features like Grid, Flexbox, and custom properties for complex layouts.", linkUrl: "https://github.com", author: "Bob White", skill: "CSS" },
+            { id: 3, title: "JavaScript Fundamentals", publishedDate: "March 5, 2025", description: "Grasp core JavaScript concepts such as variables, functions, objects, and the DOM.", linkUrl: "https://github.com", author: "Charlie Black", skill: "JavaScript" },
+            { id: 4, title: "Building REST APIs with Node.js", publishedDate: "March 8, 2025", description: "Create robust backend APIs using Node.js, Express, and best practices.", linkUrl: "https://github.com", author: "Diana Blue", skill: "Node.js" },
+            { id: 5, title: "React State Management", publishedDate: "March 10, 2025", description: "Understand different state management patterns in React, including Context API and Redux.", linkUrl: "https://github.com", author: "Ethan Gray", skill: "React" },
+            { id: 6, title: "Introduction to GenAI", publishedDate: "March 12, 2025", description: "An overview of Generative AI, large language models, and their applications.", linkUrl: "https://github.com", author: "Fiona Purple", skill: "GenAI" },
+            { id: 7, title: "Data Analysis with Pandas", publishedDate: "March 15, 2025", description: "Learn how to manipulate and analyze data effectively using the Python Pandas library.", linkUrl: "https://github.com", author: "George Yellow", skill: "Python" },
+            { id: 8, title: "Responsive Web Design Principles", publishedDate: "March 17, 2025", description: "Master the techniques for creating websites that adapt to various screen sizes.", linkUrl: "https://github.com", author: "Hannah Red", skill: "CSS" },
+            { id: 9, title: "Asynchronous JavaScript", publishedDate: "March 19, 2025", description: "Understand Promises, async/await, and handling asynchronous operations in JS.", linkUrl: "https://github.com", author: "Ian Orange", skill: "JavaScript" },
+            { id: 10, title: "Database Design Basics", publishedDate: "March 21, 2025", description: "Learn the fundamentals of relational database design and normalization.", linkUrl: "https://github.com", author: "Julia Pink", skill: "Databases" },
+            { id: 11, title: "Getting Started with Vue.js", publishedDate: "March 23, 2025", description: "A beginner's guide to the progressive JavaScript framework Vue.js.", linkUrl: "https://github.com", author: "Kevin Cyan", skill: "Vue.js" },
+            { id: 12, title: "Understanding Cloud Computing", publishedDate: "March 25, 2025", description: "Explore the basics of cloud services, deployment models, and providers.", linkUrl: "https://github.com", author: "Laura Brown", skill: "Cloud" },
+            { id: 13, title: "Python for Data Science", publishedDate: "March 27, 2025", description: "Leverage Python libraries like NumPy and Matplotlib for data science tasks.", linkUrl: "https://github.com", author: "Mike Gold", skill: "Python" },
+            { id: 14, title: "Tailwind CSS Deep Dive", publishedDate: "March 28, 2025", description: "Become proficient with the utility-first CSS framework Tailwind CSS.", linkUrl: "https://github.com", author: "Nora Silver", skill: "CSS" },
+            { id: 15, title: "Modern JavaScript Features (ES6+)", publishedDate: "March 29, 2025", description: "Explore new features in JavaScript like arrow functions, destructuring, and modules.", linkUrl: "https://github.com", author: "Oscar Indigo", skill: "JavaScript" },
+            { id: 16, title: "Building Microservices", publishedDate: "March 30, 2025", description: "An introduction to the microservices architectural style and its benefits.", linkUrl: "https://github.com", author: "Penny Violet", skill: "Architecture" },
+            { id: 17, title: "Introduction to Docker", publishedDate: "April 1, 2025", description: "Learn how to containerize applications using Docker for easier deployment.", linkUrl: "https://github.com", author: "Quinn Teal", skill: "DevOps" },
+            { id: 18, title: "Prompt Engineering Techniques", publishedDate: "April 3, 2025", description: "Learn effective ways to interact with large language models using prompts.", linkUrl: "https://github.com", author: "Ruby Magenta", skill: "GenAI" },
+            { id: 19, title: "Web Accessibility (WCAG)", publishedDate: "April 5, 2025", description: "Understand the principles of web accessibility and how to meet WCAG standards.", linkUrl: "https://github.com", author: "Steve Lime", skill: "Accessibility" },
+            { id: 20, title: "Version Control with Git", publishedDate: "April 7, 2025", description: "Master the essential Git commands for effective version control and collaboration.", linkUrl: "https://github.com", author: "Tina Maroon", skill: "Git" }
+        ];
+
+        // --- Configuration ---
+        const ITEMS_PER_PAGE = 10; // Number of cards to show per page
+
+        // --- State Variables ---
+        let currentPage = 1;
+        let filteredCards = [...allCardsData]; // Initially, show all cards
+
+        // --- DOM Element References ---
+        const searchInput = document.getElementById('search-input');
+        const cardGrid = document.getElementById('card-grid');
+        const paginationControls = document.getElementById('pagination-controls');
+
+        // --- Functions ---
+
+        /**
+         * Renders a single card's HTML.
+         * @param {object} cardData - The data for the card.
+         * @returns {string} HTML string for the card.
+         */
+        function renderCard(cardData) {
+            // Use text-sm for smaller text elements for compactness
+            // Use line-clamp-3 (requires plugin or custom CSS) to limit description lines
+            // Adjusted padding to p-4
+            return `
+                <a href="${cardData.linkUrl}" target="_blank" rel="noopener noreferrer"
+                   class="block text-current no-underline focus:ring-2 focus:ring-blue-500 focus:outline-none rounded-lg group"
+                   aria-label="Read more about ${cardData.title}">
+                    <div class="bg-white p-4 border border-gray-200 rounded-lg shadow-md h-full flex flex-col group-hover:shadow-lg transition-shadow duration-200 ease-in-out">
+                        <h3 class="text-md font-semibold mb-1 text-gray-800 group-hover:text-blue-600">${cardData.title}</h3>
+                        <p class="text-xs text-gray-500 mb-2">${cardData.publishedDate}</p>
+                        <p class="text-sm text-gray-700 mb-3 flex-grow line-clamp-3"> ${cardData.description}
+                        </p>
+                        <div class="mt-auto text-xs text-gray-600 flex justify-between items-center pt-2 border-t border-gray-100">
+                           <span>By: ${cardData.author}</span>
+                           <span class="inline-block bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">${cardData.skill}</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+            // Note: For line-clamp to work reliably, you might need the @tailwindcss/line-clamp plugin
+            // or add custom CSS like:
+            // .line-clamp-3 {
+            //   overflow: hidden;
+            //   display: -webkit-box;
+            //   -webkit-line-clamp: 3;
+            //   -webkit-box-orient: vertical;
+            // }
+        }
+
+        /**
+         * Renders pagination controls.
+         * @param {number} totalItems - Total number of items to paginate.
+         * @param {number} currentPage - The currently active page.
+         */
+        function renderPaginationControls(totalItems, currentPage) {
+            paginationControls.innerHTML = ''; // Clear existing controls
+            const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+
+            if (totalPages <= 1) return; // No pagination needed for 1 or fewer pages
+
+            // Previous Button
+            const prevButton = document.createElement('button');
+            prevButton.textContent = 'Previous';
+            prevButton.classList.add('pagination-btn');
+            prevButton.disabled = currentPage === 1;
+            prevButton.dataset.page = currentPage - 1;
+            paginationControls.appendChild(prevButton);
+
+            // Page Number Buttons (simplified for brevity, could add more complex logic)
+            for (let i = 1; i <= totalPages; i++) {
+                const pageButton = document.createElement('button');
+                pageButton.textContent = i;
+                pageButton.classList.add('pagination-btn');
+                if (i === currentPage) {
+                    pageButton.classList.add('active');
+                    pageButton.setAttribute('aria-current', 'page');
+                }
+                pageButton.disabled = i === currentPage;
+                pageButton.dataset.page = i;
+                paginationControls.appendChild(pageButton);
+            }
+
+            // Next Button
+            const nextButton = document.createElement('button');
+            nextButton.textContent = 'Next';
+            nextButton.classList.add('pagination-btn');
+            nextButton.disabled = currentPage === totalPages;
+            nextButton.dataset.page = currentPage + 1;
+            paginationControls.appendChild(nextButton);
+        }
+
+        /**
+         * Displays the cards for a specific page number.
+         * @param {number} pageNum - The page number to display.
+         */
+        function displayPage(pageNum) {
+            currentPage = pageNum;
+            cardGrid.innerHTML = ''; // Clear the grid
+
+            const startIndex = (pageNum - 1) * ITEMS_PER_PAGE;
+            const endIndex = startIndex + ITEMS_PER_PAGE;
+            const pageItems = filteredCards.slice(startIndex, endIndex);
+
+            if (pageItems.length === 0 && filteredCards.length > 0) {
+                // Handle case where current page becomes empty after filtering (e.g., go to last valid page)
+                currentPage = Math.max(1, Math.ceil(filteredCards.length / ITEMS_PER_PAGE));
+                displayPage(currentPage); // Recursive call with corrected page
+                return;
+            }
+
+             if (pageItems.length === 0 && filteredCards.length === 0) {
+                 cardGrid.innerHTML = '<p class="text-gray-500 col-span-full text-center">No matching cards found.</p>';
+             } else {
+                pageItems.forEach(cardData => {
+                    cardGrid.innerHTML += renderCard(cardData);
+                });
+             }
+
+
+            renderPaginationControls(filteredCards.length, currentPage);
+        }
+
+        /**
+         * Filters cards based on the search input value.
+         */
+        function filterCards() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (!searchTerm) {
+                filteredCards = [...allCardsData];
+            } else {
+                filteredCards = allCardsData.filter(card => {
+                    return (
+                        card.title.toLowerCase().includes(searchTerm) ||
+                        card.description.toLowerCase().includes(searchTerm) ||
+                        card.author.toLowerCase().includes(searchTerm) ||
+                        card.skill.toLowerCase().includes(searchTerm)
+                    );
+                });
+            }
+
+            displayPage(1); // Go back to page 1 after filtering
+        }
+
+        // --- Event Listeners ---
+
+        // Search input listener
+        searchInput.addEventListener('input', filterCards);
+
+        // Pagination controls listener (using event delegation)
+        paginationControls.addEventListener('click', (event) => {
+            if (event.target.tagName === 'BUTTON' && event.target.dataset.page) {
+                const pageToGo = parseInt(event.target.dataset.page, 10);
+                if (!isNaN(pageToGo) && pageToGo !== currentPage) {
+                    displayPage(pageToGo);
+                     // Scroll to the top of the grid after page change for better UX
+                    cardGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+
+        // --- Initial Load ---
+        displayPage(1); // Display the first page initially
+
+    </script>
+
+</body>
+</html>
