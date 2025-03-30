@@ -23,6 +23,17 @@ No build steps or server setup are required as it's a self-contained HTML file w
 ## Data Structure
 The card data is currently hardcoded within the <script> tag in the HTML file as a JavaScript array of objects. Each card object follows this structure:
 
+|Field| Description|
+|----|----|
+|id           | Unique identifier (currently unused but good practice)|
+|title        | Main title of the card|
+|publishedDate| Date string (e.g., "March 1, 2025")|
+|description  | Descriptive text content|
+|linkUrl      | URL the card links to|
+|author       | Name of the author/creator|
+|skill        | Skill category/tag (e.g., "Python", "CSS")|
+
+
 ```json
 {
   id: Number,           // Unique identifier (currently unused but good practice)
