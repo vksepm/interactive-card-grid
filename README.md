@@ -36,13 +36,13 @@ The card data is currently hardcoded within the <script> tag in the HTML file as
 
 ```json
 {
-  id: Number
-  title: String
-  publishedDate: String
-  description: String
-  linkUrl: String
-  author: String
-  skill: String
+  "id": "Number",
+  "title": "String",
+  "publishedDate": "String",
+  "description": "String",
+  "linkUrl": "String",
+  "author": "String",
+  "skill": "String"
 }
 ```
 
