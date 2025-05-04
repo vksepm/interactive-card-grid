@@ -1,0 +1,284 @@
+{
+    "cards": [
+        {
+            "id": 1,
+            "title": "Introduction to Python",
+            "publishedDate": "March 1, 2025",
+            "description": "Learn the basics of Python programming, including syntax, data types, and control flow.",
+            "linkUrl": "https://github.com",
+            "author": "Alice Green",
+            "skill": "Python",
+            "links": [
+                { "text": "Python Official Documentation", "url": "https://docs.python.org/3/" },
+                { "text": "Python Community Forums", "url": "https://discuss.python.org/" },
+                { "text": "Python Package Index", "url": "https://pypi.org/" }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Advanced CSS Techniques",
+            "publishedDate": "March 3, 2025",
+            "description": "Explore modern CSS features like Grid, Flexbox, and custom properties for complex layouts.",
+            "linkUrl": "https://github.com",
+            "author": "Bob White",
+            "skill": "CSS",
+            "links": [
+                { "text": "MDN CSS Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+                { "text": "CSS Tricks", "url": "https://css-tricks.com/" },
+                { "text": "W3C CSS Specifications", "url": "https://www.w3.org/Style/CSS/" }
+            ]
+        },
+        {
+            "id": 3,
+            "title": "JavaScript Fundamentals",
+            "publishedDate": "March 5, 2025",
+            "description": "Grasp core JavaScript concepts such as variables, functions, objects, and the DOM.",
+            "linkUrl": "https://github.com",
+            "author": "Charlie Black",
+            "skill": "JavaScript",
+            "links": [
+                { "text": "MDN JavaScript Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide" },
+                { "text": "JavaScript.info", "url": "https://javascript.info/" },
+                { "text": "JavaScript Weekly", "url": "https://javascriptweekly.com/" }
+            ]
+        },
+        {
+            "id": 4,
+            "title": "Building REST APIs with Node.js",
+            "publishedDate": "March 8, 2025",
+            "description": "Create robust backend APIs using Node.js, Express, and best practices.",
+            "linkUrl": "https://github.com",
+            "author": "Diana Blue",
+            "skill": "Node.js",
+            "links": [
+                { "text": "Node.js Documentation", "url": "https://nodejs.org/docs" },
+                { "text": "Express.js Guide", "url": "https://expressjs.com/guide" },
+                { "text": "Node Weekly", "url": "https://nodeweekly.com/" }
+            ]
+        },
+        {
+            "id": 5,
+            "title": "React State Management",
+            "publishedDate": "March 10, 2025",
+            "description": "Understand different state management patterns in React, including Context API and Redux.",
+            "linkUrl": "https://github.com",
+            "author": "Ethan Gray",
+            "skill": "React",
+            "links": [
+                { "text": "React Official Docs", "url": "https://react.dev/" },
+                { "text": "Redux Documentation", "url": "https://redux.js.org/" },
+                { "text": "React Context API Guide", "url": "https://react.dev/reference/react/useContext" }
+            ]
+        },
+        {
+            "id": 6,
+            "title": "Introduction to GenAI",
+            "publishedDate": "March 12, 2025",
+            "description": "An overview of Generative AI, large language models, and their applications.",
+            "linkUrl": "https://github.com",
+            "author": "Fiona Purple",
+            "skill": "GenAI",
+            "links": [
+                { "text": "OpenAI Documentation", "url": "https://platform.openai.com/docs" },
+                { "text": "Hugging Face Hub", "url": "https://huggingface.co/" },
+                { "text": "AI Research Papers", "url": "https://arxiv.org/list/cs.AI/recent" }
+            ]
+        },
+        {
+            "id": 7,
+            "title": "Data Analysis with Pandas",
+            "publishedDate": "March 15, 2025",
+            "description": "Learn how to manipulate and analyze data effectively using the Python Pandas library.",
+            "linkUrl": "https://github.com",
+            "author": "George Yellow",
+            "skill": "Python",
+            "links": [
+                { "text": "Pandas Documentation", "url": "https://pandas.pydata.org/docs/" },
+                { "text": "Python Data Science Handbook", "url": "https://jakevdp.github.io/PythonDataScienceHandbook/" },
+                { "text": "Real Python Pandas Tutorials", "url": "https://realpython.com/pandas-python-explore-dataset/" }
+            ]
+        },
+        {
+            "id": 8,
+            "title": "Responsive Web Design Principles",
+            "publishedDate": "March 17, 2025",
+            "description": "Master the techniques for creating websites that adapt to various screen sizes.",
+            "linkUrl": "https://github.com",
+            "author": "Hannah Red",
+            "skill": "CSS",
+            "links": [
+                { "text": "MDN Responsive Design", "url": "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design" },
+                { "text": "Web.dev Responsive Design", "url": "https://web.dev/responsive-web-design-basics/" },
+                { "text": "Smashing Magazine RWD", "url": "https://www.smashingmagazine.com/category/responsive-web-design/" }
+            ]
+        },
+        {
+            "id": 9,
+            "title": "Asynchronous JavaScript",
+            "publishedDate": "March 19, 2025",
+            "description": "Understand Promises, async/await, and handling asynchronous operations in JS.",
+            "linkUrl": "https://github.com",
+            "author": "Ian Orange",
+            "skill": "JavaScript",
+            "links": [
+                { "text": "MDN Async JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous" },
+                { "text": "JavaScript.info Async", "url": "https://javascript.info/async" },
+                { "text": "Node.js Event Loop", "url": "https://nodejs.org/en/docs/guides/event-loop-timers-and-nexttick" }
+            ]
+        },
+        {
+            "id": 10,
+            "title": "Database Design Basics",
+            "publishedDate": "March 21, 2025",
+            "description": "Learn the fundamentals of relational database design and normalization.",
+            "linkUrl": "https://github.com",
+            "author": "Julia Pink",
+            "skill": "Databases",
+            "links": [
+                { "text": "Database Design Tutorial", "url": "https://www.postgresqltutorial.com/postgresql-database-design/" },
+                { "text": "Normalization Guide", "url": "https://www.guru99.com/database-normalization.html" },
+                { "text": "SQL Best Practices", "url": "https://www.sqlstyle.guide/" }
+            ]
+        },
+        {
+            "id": 11,
+            "title": "Getting Started with Vue.js",
+            "publishedDate": "March 23, 2025",
+            "description": "A beginner's guide to the progressive JavaScript framework Vue.js.",
+            "linkUrl": "https://github.com",
+            "author": "Kevin Cyan",
+            "skill": "Vue.js",
+            "links": [
+                { "text": "Vue.js Guide", "url": "https://vuejs.org/guide/introduction.html" },
+                { "text": "Vue Router Documentation", "url": "https://router.vuejs.org/" },
+                { "text": "Vue Mastery Tutorials", "url": "https://www.vuemastery.com/courses/" }
+            ]
+        },
+        {
+            "id": 12,
+            "title": "Understanding Cloud Computing",
+            "publishedDate": "March 25, 2025",
+            "description": "Explore the basics of cloud services, deployment models, and providers.",
+            "linkUrl": "https://github.com",
+            "author": "Laura Brown",
+            "skill": "Cloud",
+            "links": [
+                { "text": "AWS Documentation", "url": "https://docs.aws.amazon.com/" },
+                { "text": "Azure Learning Path", "url": "https://learn.microsoft.com/azure/" },
+                { "text": "Google Cloud Training", "url": "https://cloud.google.com/training" }
+            ]
+        },
+        {
+            "id": 13,
+            "title": "Python for Data Science",
+            "publishedDate": "March 27, 2025",
+            "description": "Leverage Python libraries like NumPy and Matplotlib for data science tasks.",
+            "linkUrl": "https://github.com",
+            "author": "Mike Gold",
+            "skill": "Python",
+            "links": [
+                { "text": "NumPy Documentation", "url": "https://numpy.org/doc/" },
+                { "text": "Matplotlib Tutorials", "url": "https://matplotlib.org/stable/tutorials/" },
+                { "text": "SciPy Lectures", "url": "https://scipy-lectures.org/" }
+            ]
+        },
+        {
+            "id": 14,
+            "title": "Tailwind CSS Deep Dive",
+            "publishedDate": "March 28, 2025",
+            "description": "Become proficient with the utility-first CSS framework Tailwind CSS.",
+            "linkUrl": "https://github.com",
+            "author": "Nora Silver",
+            "skill": "CSS",
+            "links": [
+                { "text": "Tailwind Documentation", "url": "https://tailwindcss.com/docs" },
+                { "text": "Tailwind UI Components", "url": "https://tailwindui.com/" },
+                { "text": "Tailwind Tips & Tricks", "url": "https://blog.tailwindcss.com/" }
+            ]
+        },
+        {
+            "id": 15,
+            "title": "Modern JavaScript Features (ES6+)",
+            "publishedDate": "March 29, 2025",
+            "description": "Explore new features in JavaScript like arrow functions, destructuring, and modules.",
+            "linkUrl": "https://github.com",
+            "author": "Oscar Indigo",
+            "skill": "JavaScript",
+            "links": [
+                { "text": "MDN ES6 Guide", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules" },
+                { "text": "ES6 Features Overview", "url": "https://github.com/lukehoban/es6features" },
+                { "text": "Modern JS Tutorial", "url": "https://javascript.info/modules" }
+            ]
+        },
+        {
+            "id": 16,
+            "title": "Building Microservices",
+            "publishedDate": "March 30, 2025",
+            "description": "An introduction to the microservices architectural style and its benefits.",
+            "linkUrl": "https://github.com",
+            "author": "Penny Violet",
+            "skill": "Architecture",
+            "links": [
+                { "text": "Microservices.io", "url": "https://microservices.io/" },
+                { "text": "Martin Fowler's Guide", "url": "https://martinfowler.com/articles/microservices.html" },
+                { "text": "Spring Microservices", "url": "https://spring.io/microservices" }
+            ]
+        },
+        {
+            "id": 17,
+            "title": "Introduction to Docker",
+            "publishedDate": "April 1, 2025",
+            "description": "Learn how to containerize applications using Docker for easier deployment.",
+            "linkUrl": "https://github.com",
+            "author": "Quinn Teal",
+            "skill": "DevOps",
+            "links": [
+                { "text": "Docker Documentation", "url": "https://docs.docker.com/" },
+                { "text": "Docker Getting Started", "url": "https://docs.docker.com/get-started/" },
+                { "text": "Docker Best Practices", "url": "https://docs.docker.com/develop/develop-images/dockerfile_best-practices/" }
+            ]
+        },
+        {
+            "id": 18,
+            "title": "Prompt Engineering Techniques",
+            "publishedDate": "April 3, 2025",
+            "description": "Learn effective ways to interact with large language models using prompts.",
+            "linkUrl": "https://github.com",
+            "author": "Ruby Magenta",
+            "skill": "GenAI",
+            "links": [
+                { "text": "OpenAI Prompt Guide", "url": "https://platform.openai.com/docs/guides/prompt-engineering" },
+                { "text": "Anthropic Prompt Guide", "url": "https://www.anthropic.com/index/prompting-guides" },
+                { "text": "LangChain Docs", "url": "https://python.langchain.com/docs/get_started/introduction.html" }
+            ]
+        },
+        {
+            "id": 19,
+            "title": "Web Accessibility (WCAG)",
+            "publishedDate": "April 5, 2025",
+            "description": "Understand the principles of web accessibility and how to meet WCAG standards.",
+            "linkUrl": "https://github.com",
+            "author": "Steve Lime",
+            "skill": "Accessibility",
+            "links": [
+                { "text": "WCAG Guidelines", "url": "https://www.w3.org/WAI/standards-guidelines/wcag/" },
+                { "text": "MDN Accessibility", "url": "https://developer.mozilla.org/en-US/docs/Web/Accessibility" },
+                { "text": "A11Y Project", "url": "https://www.a11yproject.com/" }
+            ]
+        },
+        {
+            "id": 20,
+            "title": "Version Control with Git",
+            "publishedDate": "April 7, 2025",
+            "description": "Master the essential Git commands for effective version control and collaboration.",
+            "linkUrl": "https://github.com",
+            "author": "Tina Maroon",
+            "skill": "Git",
+            "links": [
+                { "text": "Git Documentation", "url": "https://git-scm.com/doc" },
+                { "text": "Git Branching Tutorial", "url": "https://learngitbranching.js.org/" },
+                { "text": "GitHub Guides", "url": "https://guides.github.com/" }
+            ]
+        }
+    ]
+}
